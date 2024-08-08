@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-express-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon --ext *"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-livereload": "^0.6.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "livereload": "^0.9.3",
+    "method-override": "^3.0.0",
+    "moment": "^2.30.1",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.4",
+    "nodemon": "^3.1.0"
+  }
+}

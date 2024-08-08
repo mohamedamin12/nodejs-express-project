@@ -1,0 +1,75 @@
+// index
+(req, res) => {
+  Customer.find()
+    .then((data) => {
+      res.render("index", { data: data, moment: moment });
+    })
+    .catch((error) => {
+      console.log({ message: error });
+    });
+}
+
+// edit
+(req, res) => {
+  Customer.findById(req.params.id)
+  .then((data) => {
+    res.render("user/edit", { data: data, moment: moment });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
+// view
+
+(req, res) => {
+  Customer.findById(req.params.id).then((data)=>{
+    res.render("user/view" , {data : data , moment : moment});
+  }).catch((error)=>{console.log({"message" : error})})
+  
+}
+
+
+(req, res) => {
+  const customer = new Customer(req.body);
+  customer
+    .save()
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// search
+
+(req, res) => {
+  Customer.find({firstName:req.body.searchText}).then((data)=>{
+    res.render('./user/search.ejs' , {data : data})
+  }).catch((error)=>{
+    console.log({"message" : error})
+  })
+}
+
+// update
+(req, res) => {
+  Customer.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then((data) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+(req, res) => {
+  Customer.findByIdAndDelete({ _id: req.params.id })
+    .then((data) => {
+      res.redirect("/");
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
